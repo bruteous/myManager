@@ -40,7 +40,6 @@ public class SpringTilesConfigurer implements ServletContextAware,
 
     private TilesApplicationContext tilesContext;
 
-
     public SpringTilesConfigurer() {
             this.tilesPropertyMap.put(
 		            AbstractTilesApplicationContextFactory.APPLICATION_CONTEXT_FACTORY_INIT_PARAM,
