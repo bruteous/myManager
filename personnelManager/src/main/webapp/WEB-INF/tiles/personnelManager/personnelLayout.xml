@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="personnelManagerLayout" extends="standardLayout">
+		<put-attribute name="title" value="Personnel Management" type="string"/>
+		<put-attribute name="menu" value="/WEB-INF/layouts/personnelManager/menu.jsp"/>
+	</definition>
+    <definition name="welcome" extends="personnelManagerLayout">
+        <put-attribute name="content" value="/WEB-INF/layouts/personnelManager/welcome.jsp"/>
+    </definition>
+    <definition name="addPerson" extends="personnelManagerLayout">
+		<put-attribute name="content" value="/WEB-INF/layouts/personnelManager/person.jsp"/>
+	</definition>
+    <definition name="searchPerson" extends="personnelManagerLayout">
+		<put-attribute name="content" value="/WEB-INF/layouts/personnelManager/searchPerson.jsp"/>
+	</definition>
+    <definition name="searchPersonResult" extends="personnelManagerLayout">
+		<put-attribute name="content" value="/WEB-INF/layouts/personnelManager/searchPersonResult.jsp"/>
+	</definition>
+</tiles-definitions>

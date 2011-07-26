@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+            xsi:schemaLocation="
+
+    http://www.springframework.org/schema/beans
+
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+
+    http://www.springframework.org/schema/mvc
+
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+    <mvc:annotation-driven/>
+
+    <import resource="common-bean.xml"/>
+    <!--
+		Enables convention-based request URL mapping to @Controllers e.g.
+		/hotels/* maps to HotelsController
+	-->
+    <!--<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">-->
+        <!--<property name="order" value="0"/>-->
+    <!--</bean>-->
+
+    <!--  Maps all other request URLs to views -->
+    <bean id="viewMappings"
+          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="defaultHandler">
+            <!--
+				Selects view names to render based on the request URI: e.g. the
+				"/intro" URL would map to the view named "intro"
+			-->
+            <bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+        </property>
+        <property name="order" value="2"/>
+    </bean>
+
+    <!--  Configures the Tiles layout system -->
+    <bean id="tilesConfigurer" class="com.common.tiles2.SpringTilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles/layout.xml</value>
+                <value>/WEB-INF/tiles/personnelManager/personnellayout.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+    <!--  Enables annotated POJO @Controllers   -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+    <!--  Enables plain Controllers   -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+
+    <!-- Enable annotation-based validation Framework-->
+</beans>

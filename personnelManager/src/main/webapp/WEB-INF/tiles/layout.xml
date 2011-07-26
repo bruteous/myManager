@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	
+	<definition name="standardLayout" template="/WEB-INF/layouts/layout.jsp" >
+        <put-attribute name="title" value="Dynamic Human Resources Management System" type="string" />
+        <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+        <put-attribute name="content" value="/WEB-INF/layouts/blank.jsp" />	
+	</definition>
+
+
+</tiles-definitions>

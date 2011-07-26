@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--<hibernate-configuration>-->
+    <!--<session-factory>-->
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
+		<!--&lt;!&ndash; JDBC connection pool (use the built-in) &ndash;&gt;-->
+		<!--<property name="connection.pool_size">1</property>-->
+		<!--&lt;!&ndash; SQL dialect &ndash;&gt;-->
+		<!--<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
+		<!--&lt;!&ndash; Enable Hibernate's automatic session context management &ndash;&gt;-->
+		<!--<property name="current_session_context_class">thread</property>-->
+		<!--&lt;!&ndash; Echo all executed SQL to stdout &ndash;&gt;-->
+		<!--<property name="show_sql">true</property>-->
+		<!--&lt;!&ndash; update the database schema on startup &ndash;&gt;-->
+		<!--<property name="hbm2ddl.auto">update</property>-->
+
+		<!--<mapping class="com.personnelmanager.domain.db.Person" />-->
+        <!--<mapping class="com.personnelmanager.domain.db.Role" />-->
+    <!--</session-factory>-->
+<!--</hibernate-configuration>-->
+<hibernate-configuration>
+    <session-factory>
+        <!--<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>-->
+
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+
+        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+        <!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hbm2ddl.auto">create-drop</property>
+
+		<mapping class="com.personnelmanager.domain.db.Person" />
+        <mapping class="com.personnelmanager.domain.db.Role" />
+    </session-factory>
+</hibernate-configuration>

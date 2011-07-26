@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/webflow-config
+           http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+
+	<!-- Webflow definitions -->
+    <!--<import resource="/uam/uam-webflow-config.xml"/>-->
+	<!--<import resource="/pmm/pmm-webflow-config.xml"/>-->
+    <import resource="common-bean.xml"/>
+	<!--  URL to flow mapping rules -->
+	<bean id="flowMappings"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+		    <props>
+            	<!--<prop key="uam/addUser.htm">defaultFlowController</prop>-->
+            	<!--<prop key="uam/findUser.htm">defaultFlowController</prop>-->
+            	<!--<prop key="uam/modifyUser.htm">defaultFlowController</prop>-->
+            	<!--<prop key="uam/addRole.htm">defaultFlowController</prop>-->
+            	<!--<prop key="uam/findRole.htm">defaultFlowController</prop>-->
+            	<!--<prop key="uam/modifyRole.htm">defaultFlowController</prop>-->
+
+            	<!--<prop key="pmm/addAddress.htm">defaultFlowController</prop>-->
+            	<!--<prop key="pmm/modifyAddress.htm">defaultFlowController</prop>-->
+
+            	<!--<prop key="pmm/addPhone.htm">defaultFlowController</prop>-->
+            	<!--<prop key="pmm/modifyPhone.htm">defaultFlowController</prop>-->
+
+            	<!--<prop key="pmm/addEmail.htm">defaultFlowController</prop>-->
+            	<!--<prop key="pmm/modifyEmail.htm">defaultFlowController</prop>-->
+
+            	<!--<prop key="pmm/addPerson.htm">defaultFlowController</prop>-->
+            	<!--<prop key="pmm/modifyPerson.htm">defaultFlowController</prop>-->
+            	<!--<prop key="pmm/findPerson.htm">defaultFlowController</prop>-->
+
+        	</props>
+		</property>
+		<property name="order" value="1" />
+	</bean>
+
+	<!--  Enables FlowHandlers   -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="defaultFlowExecutor" />
+	</bean>
+
+    <bean id="defaultFlowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+        <property name="flowExecutor" ref="defaultFlowExecutor"/>
+        <property name="flowUrlHandler" ref="defaultFlowUrlHandler"/>
+    </bean>
+
+    <webflow:flow-executor id="defaultFlowExecutor" flow-registry="defaultFlowRegistry">
+<!--        <webflow:flow-execution-listeners>-->
+<!--            <webflow:listener ref="errorLoggingFlowExecutionListener"/>-->
+<!--            <webflow:listener ref="hibernateFlowExecutionListener"/>-->
+<!--            <webflow:listener ref="messageHandlerListener"/>-->
+<!--            <webflow:listener ref="securityFlowExecutionListener" />-->
+<!--        </webflow:flow-execution-listeners>-->
+    </webflow:flow-executor>
+
+	<!--<bean id="securityFlowExecutionListener"-->
+      <!--class="org.springframework.webflow.security.SecurityFlowExecutionListener" />-->
+
+    <webflow:flow-registry id="defaultFlowRegistry" flow-builder-services="flowBuilderServices">
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/add-user-flow.xml"-->
+                                   <!--id="uam/addUser"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/find-user-flow.xml"-->
+                                   <!--id="uam/findUser"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/modify-user-flow.xml"-->
+        							<!--id="uam/modifyUser"/>-->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/add-role-flow.xml"-->
+                                   <!--id="uam/addRole"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/find-role-flow.xml"-->
+                                   <!--id="uam/findRole"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/uam/modify-role-flow.xml"-->
+        							<!--id="uam/modifyRole"/>-->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/add-address-flow.xml"-->
+                                   <!--id="pmm/addAddress"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/modify-address-flow.xml"-->
+        							<!--id="pmm/modifyAddress"/>        							 -->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/add-phone-flow.xml"-->
+                                   <!--id="pmm/addPhone"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/modify-phone-flow.xml"-->
+        							<!--id="pmm/modifyPhone"/>        							 -->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/add-email-flow.xml"-->
+                                   <!--id="pmm/addEmail"/>-->
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/modify-email-flow.xml"-->
+        							<!--id="pmm/modifyEmail"/>        							 -->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/add-person-flow.xml"-->
+                                   <!--id="pmm/addPerson"/>-->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/modify-person-flow.xml"-->
+                                   <!--id="pmm/modifyPerson"/>-->
+
+        <!--<webflow:flow-location path="/WEB-INF/flow/pmm/find-person-flow.xml"-->
+                                   <!--id="pmm/findPerson"/>-->
+
+    </webflow:flow-registry>
+
+    <!--
+       - Flow URL handler.  Provides the mapping between the incoming URL path and the resource used to handle that
+       - path.
+    -->
+    <bean id="defaultFlowUrlHandler" class="org.springframework.webflow.context.servlet.DefaultFlowUrlHandler"/>
+
+    <!--
+      - Configure factory services - define the viewFactory at this point.
+      -->
+    <webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="viewFactoryCreator" development="true"/>
+
+    <bean id="viewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+        <property name="viewResolvers">
+            <list>
+                <ref bean="tilesViewResolver"/>
+            </list>
+        </property>
+<!--        <property name="validationService" ref="validationService"/>-->
+    </bean>
+    <!-- Validator -->
+	<!--<bean id="commandValidator" class="com.dhrms.common.service.CommandValidator">-->
+		<!--<property name="uamService" ref="uamService"/>-->
+		<!--<property name="pmmService" ref="pmmService"/>-->
+		<!--<property name="errorMessageHelper" ref="errorMessageHelper"/>-->
+	<!--</bean>-->
+
+	<!-- Helper classes -->
+	<!--<bean id="errorMessageHelper" class="com.dhrms.common.service.ErrorMessageHelper"/>-->
+
+	<!-- View Controllers -->
+	<!--<bean id="genericViewController" class="com.dhrms.common.GenericViewController">-->
+    	<!--<property name="uamService" ref="uamService"/>-->
+    	<!--<property name="pmmService" ref="pmmService"/>-->
+    <!--</bean>-->
+</beans>
