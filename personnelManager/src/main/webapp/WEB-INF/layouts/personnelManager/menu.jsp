@@ -10,6 +10,12 @@
       <p>
         <a href="searchPerson.htm" title="Search Person" class="menuItem">Search Person</a>
       </p>
+      <p>
+        <a href="addRole.htm" title="Add Role" class="menuItem">Add Role</a>
+      </p>
+      <p>
+        <a href="searchRole.htm" title="Search Role" class="menuItem">Search Role</a>
+      </p>
 
       <!-- Creates the rounded corner on the bottom of the left menu -->
       <div class="bottomCorner">

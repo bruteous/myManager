@@ -1,8 +1,10 @@
 package com.personnelmanager.domain.db;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.*;
 
 /**
@@ -25,21 +27,25 @@ public class Person implements Auditable {
     private Integer version;
 
     @Column(name = "username", unique = true, nullable = false)
+    @NotEmpty
     private String login;
 
     @Column(name = "password", nullable = false)
+    @NotEmpty
     private String password;
 
     @Column(name = "salutation")
     private String salutation;
 
     @Column(name = "firstName", nullable = false)
+    @NotEmpty
     private String firstName;
 
     @Column(name = "middleName")
     private String middleName;
 
     @Column(name = "lastName", nullable = false)
+    @NotEmpty
     private String lastName;
 
     @Temporal(TemporalType.DATE)

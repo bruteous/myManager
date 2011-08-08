@@ -17,7 +17,7 @@
         </div>
         <div class="form-row">
             <label for="password"><fmt:message key="person.form.password"/>:</label>
-            <span class="input"><form:password path="password" /></span>
+            <span class="input"><form:password path="password" /><form:errors class="error" path="password"/></span>
         </div>
         <div class="form-row">
             <label for="firstName"><fmt:message key="person.form.firstName"/>:</label>

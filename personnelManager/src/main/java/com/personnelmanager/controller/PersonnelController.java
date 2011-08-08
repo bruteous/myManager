@@ -8,10 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +27,8 @@ import java.util.List;
 public class PersonnelController {
     Logger logger = Logger.getLogger(PersonnelController.class);
 
-//    @Autowired
-//    private Validator validator;
+    @Autowired
+    private Validator validator;
 
     @Autowired
     private PersonnelService service;
@@ -42,14 +41,10 @@ public class PersonnelController {
         this.service = service;
     }
 
-//    public Validator getValidator() {
-//        return validator;
-//    }
-//
-//    public void setValidator(Validator validator) {
-//        this.validator = validator;
-//    }
-
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(validator);
+    }
     /**
      * For every request for this controller, this will
      * create a person instance for the form.
@@ -113,57 +108,5 @@ public class PersonnelController {
     public String editPerson() {
         return "addPerson";
     }
-
-
-//
-//    /**
-//     * <p>Person form request.</p>
-//     *
-//     * <p>Expected HTTP GET and request '/person/form'.</p>
-//     */
-//    @RequestMapping(value="/person", method= RequestMethod.GET)
-//    public void form(Model model) {
-//        model.addAttribute("person", newRequest(null));
-//    }
-//
-//    /**
-//     * <p>Saves a person.</p>
-//     *
-//     * <p>Expected HTTP POST and request '/person/form'.</p>
-//     */
-//    @RequestMapping(value="/person", method=RequestMethod.POST)
-//    public void form(Person person, Model model) {
-//        Person result = (Person) service.save(person);
-//
-//        // set id from create
-//        if (person.getPersonId() == null) {
-//            person.setPersonId(result.getPersonId());
-//        }
-//
-//        model.addAttribute("statusMessageKey", "person.form.msg.success");
-//    }
-//
-//    /**
-//     * <p>Deletes a person.</p>
-//     *
-//     * <p>Expected HTTP POST and request '/person/delete'.</p>
-//     */
-//    @RequestMapping(value="/person/delete", method=RequestMethod.POST)
-//    public String delete(Person person) {
-//        personDao.delete(person);
-//
-//        return SEARCH_VIEW_KEY;
-//    }
-//
-//    /**
-//     * <p>Searches for all persons and returns them in a
-//     * <code>Collection</code>.</p>
-//     *
-//     * <p>Expected HTTP GET and request '/person/search'.</p>
-//     */
-//    @RequestMapping(value="/person/search", method=RequestMethod.GET)
-//    public @ModelAttribute(SEARCH_MODEL_KEY) Collection<Person> search() {
-//        return personDao.findPersons();
-//    }
 
 }
