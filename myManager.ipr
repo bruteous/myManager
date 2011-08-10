@@ -99,6 +99,8 @@
             <element id="library" level="project" name="Maven: ognl:ognl:2.6.9" />
             <element id="library" level="project" name="Maven: joda-time:joda-time:1.6" />
             <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.3" />
+            <element id="library" level="project" name="Maven: gemstone:gemfire:6.5.1.2" />
+            <element id="library" level="project" name="Maven: gemstone:gemfireHibernate:1.1" />
           </element>
         </element>
       </root>
@@ -545,6 +547,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/dom4j/dom4j/1.6.1/dom4j-1.6.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: gemstone:gemfire:6.5.1.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfire/6.5.1.2/gemfire-6.5.1.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfire/6.5.1.2/gemfire-6.5.1.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfire/6.5.1.2/gemfire-6.5.1.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: gemstone:gemfireHibernate:1.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfireHibernate/1.1/gemfireHibernate-1.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfireHibernate/1.1/gemfireHibernate-1.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/gemstone/gemfireHibernate/1.1/gemfireHibernate-1.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: hsqldb:hsqldb:1.8.0.1">

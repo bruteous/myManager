@@ -27,8 +27,7 @@ import java.util.List;
 public class PersonnelController {
     Logger logger = Logger.getLogger(PersonnelController.class);
 
-    @Autowired
-    private Validator validator;
+
 
     @Autowired
     private PersonnelService service;
@@ -41,10 +40,6 @@ public class PersonnelController {
         this.service = service;
     }
 
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) {
-        binder.setValidator(validator);
-    }
     /**
      * For every request for this controller, this will
      * create a person instance for the form.

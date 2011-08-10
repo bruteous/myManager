@@ -1,5 +1,7 @@
 package com.personnelmanager.domain.db;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,6 +18,7 @@ import java.util.*;
  */
 @Entity
 @Table(name = "person")
+@Cache(region = "PERSON", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Person implements Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

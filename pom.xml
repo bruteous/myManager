@@ -55,6 +55,9 @@
         <spring-security-tagLibs.version>3.0.3.RELEASE</spring-security-tagLibs.version>
         <ognl.version>2.6.9</ognl.version>
         <joda.time.version>1.6</joda.time.version>
+        <commons-codec.version>1.3</commons-codec.version>
+        <gemfire.version>6.5.1.2</gemfire.version>
+        <gemfire.hibernate.version>1.1</gemfire.hibernate.version>
     </properties>
     <dependencies>
         <!-- JUnit-->
@@ -351,8 +354,19 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.3</version>
-        </dependency>      
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <!--Gemstone -->
+        <dependency>
+            <groupId>gemstone</groupId>
+            <artifactId>gemfire</artifactId>
+            <version>${gemfire.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>gemstone</groupId>
+            <artifactId>gemfireHibernate</artifactId>
+            <version>${gemfire.hibernate.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -369,6 +383,12 @@
                 <groupId>org.mortbay.jetty</groupId>
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>${maven-jetty-plugin.version}</version>
+                <configuration>
+
+                    <webAppConfig>
+                        <extraClasspath>${java.class.path}</extraClasspath>
+                    </webAppConfig>
+                </configuration>
             </plugin>
 
         </plugins>
